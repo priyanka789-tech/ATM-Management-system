@@ -1,0 +1,105 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<string.h>
+#define clrscr() //system("cls")
+struct ATM 
+{
+    int acno;
+    char name[50];
+    int amount;
+};struct ATM A1;
+void design();
+void createacc();
+void deposit();
+void withd();
+void balance();
+
+
+int main()
+{
+    int choice=0;
+    int count=0;
+    clrscr();
+    char ch1,ch2,ch3,ch4;
+    printf("Enter your pin:");
+    ch1=getch();
+    printf("*");
+    ch2=getch();
+   printf("*");
+    ch3=getch();
+   printf("*");
+    ch4=getch();
+    printf("*");
+    if(ch1=='d'&& ch2=='a'&& ch3=='t'&& ch4=='a')
+    {
+    do
+    {
+     design();
+     printf("Enter your choice\n");
+     scanf("%d",&choice);
+     switch(choice)
+    {
+        case 1:createacc();break;
+        case 2:deposit();break;
+        case 3:withd();break;
+        case 4:balance();break;
+        case 5: break;
+        default: printf("Invalid choice....");
+    }
+   }while(choice!=5);
+ }
+  else
+  {
+  printf("\nInvalid pin ");
+  }
+    return 0;
+}
+void design()
+{
+  printf("------------ATM Banking Management System-------------\n\t") ;
+  printf("1. Create Account\n\t");
+  printf("2. Deposit Amount\n\t");
+  printf("3. Withdrawal Amount\n\t");
+  printf("4. Check Balance\n\t");
+  printf("5. Exit\n\t");
+  printf("------------------------------------------------------------\n");
+}
+void createacc()
+{
+    printf("Enter Account Number\n");
+    scanf("%d",&A1.acno);
+    printf("Enter your Name\n");
+    fflush(0);
+    scanf("%s",A1.name);
+    printf("enter amount\n");
+    scanf("%d",&A1.amount);
+}
+void deposit()
+{
+    int amt;
+    printf("Enter an amount for deposit\n");
+    scanf("%d",&amt);
+    if(amt<0)
+    printf("Invalid amount.....\n");
+    else
+    A1.amount=A1.amount+amt;
+}
+void withd()
+{
+    int amt;
+    printf("Enter an amount for withdrawal\n");
+    scanf("%d",&amt);
+    if(amt<0)
+    printf("Invalid amount.....\n");
+    if(amt>A1.amount)
+    printf("Insufficient balance.....\n");
+    else
+    A1.amount=A1.amount-amt;
+}
+void balance()
+{
+    printf("Account No:%d\n",A1.acno);
+    printf("Name:%s\n",A1.name);
+    printf("Balance:%d\n",A1.amount);
+}
